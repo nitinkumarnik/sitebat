@@ -148,6 +148,10 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+MEDIAFILES_DIRS = (
+    os.path.join(BASE_DIR, 'media'),
+    )
+
 # The Login URLs
 
 LOGIN_REDIRECT_URL = 'dashboard'
