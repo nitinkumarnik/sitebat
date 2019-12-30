@@ -1,0 +1,1 @@
+web: gunicorn socialbat.wsgi --log-file -

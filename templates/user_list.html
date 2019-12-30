@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load thumbnail %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/custom.css' %}">{% endblock %}
+
+{% block title %} People {% endblock %}
+
+{% block content %}
+	
+	<h1>People</h1>
+	
+	<div id="people-list" class="row">
+		{% for user in users %}
+			<div class="card mb-2 ml-2" style="width: 14rem;">
+				<div class="card-body">
+				<a href="{{ user.get_absolute_url }}">
+					{% thumbnail user.profile.photo "180x180" crop="100%" as im %}
+						<img src="{{ im.url }}">
+					{% endthumbnail %}
+				</a>
+				<div class="info">
+					<hr>
+					<a href="{{ user.get_absolute_url }}">
+						<h5>{{ user.get_full_name }}</h5>
+					</a>
+				</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

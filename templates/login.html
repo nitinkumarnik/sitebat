@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card mx-auto" style="width: 20rem;">
+	<div class="card-body">
+		<form method="POST" novalidate>
+			{% csrf_token %}
+			{{ form|crispy }}
+			<input type="hidden" name="next" value="{{ next }}">
+			<input type="submit" class="btn btn-success" value="Login">
+		</form>
+		<a href="{% url 'password_reset' %}">Forget your password?</a>
+		<p></p>
+		<ul class="list-group list-group-flush">
+    <li class="list-group-item">Don't have an account. <a href="{% url 'register' %}">Register here.</a></li>
+  
+  </ul>
+	</div>
+</div>
+
+{% endblock %}

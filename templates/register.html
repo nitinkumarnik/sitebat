@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<h1>Create an account</h1>
+	<form action="." method="post">
+		{% csrf_token %}
+		{{ user_form.username|as_crispy_field}}
+		<div class="row">
+			<div class="col-md-6">{{ user_form.first_name|as_crispy_field }}</div>
+			<div class="col-md-6">{{ user_form.email|as_crispy_field }}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">{{ user_form.password|as_crispy_field }}</div>
+			<div class="col-md-6">{{ user_form.password2|as_crispy_field }}</div>
+		</div>
+		<p><input type="submit" class="btn btn-primary btn-lg" value="Register"></p>
+	</form>
+{% endblock %}

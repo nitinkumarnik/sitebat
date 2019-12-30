@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<h1>Edit your account</h1>
+	<br>
+	<form action="." method="post" enctype="multipart/form-data" novalidate>
+		{% csrf_token %}
+		<div class="row">
+			<div class="col-6">{{ user_form.first_name|as_crispy_field }}</div>
+			<div class="col-6">{{ user_form.last_name|as_crispy_field }}</div>
+		</div>
+		<div class="row">
+			<div class="col-6">{{ user_form.email|as_crispy_field }}</div>
+			<div class="col-6">{{ profile_form.date_of_birth|as_crispy_field }}</div>
+		</div>
+		{{ profile_form.photo|as_crispy_field }}
+		<p><input type="submit" value="Save changes"></p>
+	</form>
+{% endblock %}
